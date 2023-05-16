@@ -10,7 +10,7 @@ pipeline {
     
     stage('Construir y probar backend') {
       steps {
-        dir('backend') {
+        dir('site') {
           sh 'yarn install'
           sh 'yarn run test'
         }
@@ -19,7 +19,7 @@ pipeline {
     
     stage('Construir y probar frontend') {
       steps {
-        dir('frontend') {
+        dir('site') {
           sh 'yarn install'
           sh 'yarn run test'
         }
