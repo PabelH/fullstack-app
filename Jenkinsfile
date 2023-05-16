@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    label 'linux' // Etiqueta para ejecutar en un nodo Linux/Unix específico
-  }
+  agent any
   
   stages {
     stage('Clonar repositorio') {
