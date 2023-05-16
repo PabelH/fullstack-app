@@ -11,8 +11,8 @@ pipeline {
     stage('Construir y probar backend') {
       steps {
         dir('backend') {
-          sh 'npm install'
-          sh 'npm run test'
+          sh 'yarn install'
+          sh 'yarn run test'
         }
       }
     }
@@ -20,8 +20,8 @@ pipeline {
     stage('Construir y probar frontend') {
       steps {
         dir('frontend') {
-          sh 'npm install'
-          sh 'npm run test'
+          sh 'yarn install'
+          sh 'yarn run test'
         }
       }
     }
