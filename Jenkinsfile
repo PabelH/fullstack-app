@@ -17,7 +17,7 @@ pipeline {
           sh 'yarn install'
           
           // Construir la aplicación
-          sh 'yarn build'
+          sh 'yarn start'
         }
       }
     }
