@@ -25,11 +25,5 @@ pipeline {
         }
       }
     }
-    
-    stage('Deploy') {
-      steps {
-        // TODO add steps
-      }
-    }
   }
 }
