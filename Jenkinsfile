@@ -1,21 +1,26 @@
 pipeline {
   agent any
   
- stages {
+    stages {
         stage('Clone repository') {
             steps {
-                git 'https://github.com/PabelH/fullstack-app.git' 
+               
+                    git 'https://github.com/PabelH/fullstack-app.git' 
             }
         }
         stage('Install dependencies') {
             steps {
-                sh 'curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo' 
-                sh 'yarn install' 
+                dir('site') {
+                    sh 'curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo'
+                    sh 'yarn install' 
+                }
             }
         }
         stage('Run tests') {
             steps {
-                sh 'yarn test' 
+                dir('site') {
+                    sh 'yarn test' 
+                }
             }
         }
     }
