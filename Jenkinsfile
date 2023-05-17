@@ -2,23 +2,33 @@ pipeline {
   agent any
   
   stages {
-    stage('Checkout') {
+    stage('Clone repository') {
       steps {
-        // Clonar el repositorio
         git 'https://github.com/PabelH/fullstack-app.git'
       }
     }
     
-    stage('Build') {
+    stage('Build client') {
       steps {
-        // Acceder a la carpeta 'site'
         dir('site') {
-          // Instalar dependencias con Yarn
-          sh 'yarn install'
-          
-          // Construir la aplicación
-          sh 'yarn start'
+          sh 'npm install'
+          sh 'yarn build'
         }
+      }
+    }
+    
+    stage('Build and test server') {
+      steps {
+        dir('site') {
+          sh 'npm install'
+          sh 'yarn test'
+        }
+      }
+    }
+    
+    stage('Deploy') {
+      steps {
+        // TODO add steps
       }
     }
   }
