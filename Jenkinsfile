@@ -1,27 +1,26 @@
 pipeline {
-  agent any
-  
+    agent any
+    
     stages {
-        stage('Clone repository') {
+        stage('Checkout') {
             steps {
-               
-                    git 'https://github.com/PabelH/fullstack-app.git' 
+                // Clonar el repositorio
+                git 'https://github.com/PabelH/fullstack-app.git'
             }
         }
-        stage('Install dependencies') {
+        
+        stage('Build') {
             steps {
-                dir('site') {
-                sh 'curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo' // Instalar el repositorio de Yarn
-                sh 'sudo yum install -y yarn' // Instalar Yarn
-                sh 'yarn install' // Instalar las dependencias del proyecto 
-                }
+                // Instalar dependencias y compilar
+                sh 'npm install'
+                sh 'yarn start'
             }
         }
-        stage('Run tests') {
+        
+        stage('Test') {
             steps {
-                dir('site') {
-                    sh 'yarn test' 
-                }
+                // Ejecutar pruebas
+                sh 'yarn test'
             }
         }
     }
