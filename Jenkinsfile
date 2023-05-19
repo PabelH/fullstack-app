@@ -11,8 +11,8 @@ pipeline {
     stage('Build client') {
       steps {
         dir('site') {
-          sh 'yarn install'
-         // sh 'yarn build'
+          sh 'npm install'
+          sh 'yarn build'
         }
       }
     }
@@ -21,7 +21,7 @@ pipeline {
       steps {
         dir('site') {
           //sh 'npm install'
-          sh 'yarn test'
+          sh 'yarn start'
         }
       }
     }
