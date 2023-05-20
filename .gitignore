@@ -4,7 +4,7 @@
 *.log
 .serverless
 v8-compile-cache-*
-jest/*
+
 coverage
 testProjects/*/package-lock.json
 testProjects/*/yarn.lock
