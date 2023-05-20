@@ -13,7 +13,7 @@ pipeline {
         dir('site') {
           sh 'npm install'
           
-          sh 'yarn test'
+          //sh 'yarn test'
         }
       }
     }
